@@ -86,7 +86,7 @@ namespace ExcelExport
                 values[counter, 5] = item.NumberOfRooms;
                 values[counter, 6] = item.FloorArea;
                 values[counter, 7] = item.Price;
-                values[counter, 8] = "";
+                values[counter, 8] = "=" + GetCell(counter + 2, 8)+"*1000000/" + GetCell(counter + 2, 7);
                 counter++;
             }
 
@@ -94,7 +94,26 @@ namespace ExcelExport
              GetCell(2, 1),
              GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
 
+            Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+            Excel.Range sheetRange = xlSheet.get_Range(GetCell(1, 1), GetCell(xlSheet.UsedRange.Rows.Count, headers.Length));
+            Excel.Range firstColumnData = xlSheet.get_Range(GetCell(2, 1), GetCell(xlSheet.UsedRange.Rows.Count, 1));
+            Excel.Range lastColumnData = xlSheet.get_Range(GetCell(2, headers.Length), GetCell(xlSheet.UsedRange.Rows.Count, headers.Length));
+            
+            headerRange.Font.Bold = true;
+            headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            headerRange.EntireColumn.AutoFit();
+            headerRange.RowHeight = 60;
+            headerRange.Interior.Color = Color.Salmon;
+            headerRange.BorderAround2(Excel.XlLineStyle.xlDashDotDot, Excel.XlBorderWeight.xlThick);
 
+            sheetRange.BorderAround2(Excel.XlLineStyle.xlDashDotDot, Excel.XlBorderWeight.xlThick);
+
+            firstColumnData.Font.Bold = true;
+            firstColumnData.Interior.Color = Color.LightYellow;
+
+            lastColumnData.Interior.Color = Color.LightGreen;
+            lastColumnData.NumberFormat = "#,##0.00";
         }
 
         private string GetCell(int x, int y)
