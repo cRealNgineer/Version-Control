@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programtervezési minták 2", "Programtervezési minták 2\Programtervezési minták 2.csproj", "{3A2A63F6-6042-4A86-97CE-D224F049231F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A2A63F6-6042-4A86-97CE-D224F049231F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A2A63F6-6042-4A86-97CE-D224F049231F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A2A63F6-6042-4A86-97CE-D224F049231F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A2A63F6-6042-4A86-97CE-D224F049231F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17ECB74C-35C6-49C4-A1EA-CE8F1B9CB45A}
+	EndGlobalSection
+EndGlobal
