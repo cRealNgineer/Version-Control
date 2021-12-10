@@ -64,10 +64,6 @@ namespace UnitTestExample.Test
             TestCase("irf@uni-corvinus.hu", "ABcd1234"),
             TestCase("irf@uni-corvinus.hu", "Abcde1234"),
             TestCase("irf@uni-corvinus.hu", "Aced1234"),
-            TestCase("irf@uni-corvinus.hu", "Abcd12345"),
-            TestCase("irf@uni-corvinus.hu", "Abcfd1234"),
-            TestCase("irf@uni-corvinus.hu", "Abacd1234"),
-            TestCase("irf@uni-corvinus.hu", "Abgcd1234")
             ]
         public void TestRegisterValidateException(string email, string password)
         {
