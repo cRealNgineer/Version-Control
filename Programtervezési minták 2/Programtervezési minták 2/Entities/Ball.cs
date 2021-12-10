@@ -11,9 +11,16 @@ namespace Programtervezési_minták_2.Entities
 {
     public class Ball : Toy
     {
+        public SolidBrush BallBrush { get; private set; }
+
+        public Ball(Color kivalasztottszin)
+        {
+            BallBrush = new SolidBrush(kivalasztottszin);
+        }
+
         protected override void DrawImage(Graphics g)
         {
-            g.FillEllipse(new SolidBrush(Color.Red), 0, 0, Width, Height);
+            g.FillEllipse(BallBrush, 0, 0, Width, Height);
         }
     }
 }

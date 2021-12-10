@@ -15,12 +15,29 @@ namespace Programtervezési_minták_2
     public partial class Form1 : Form
     {
         List<Toy> _toys = new List<Toy>();
-        private BallFactory myV_factoryar;
+        Toy _nextToy;
+        private IToyFactory toyFactory;
 
-        public BallFactory Factory
+        public IToyFactory Factory
         {
-            get { return myV_factoryar; }
-            set { myV_factoryar = value; }
+            get { return toyFactory; }
+            set { 
+                toyFactory = value;
+                DisplayNext();
+                }
+        }
+
+        private void DisplayNext()
+        {
+            if (_nextToy != null)
+            {
+                Controls.Remove(_nextToy);
+            }
+
+            _nextToy = Factory.CreateNew();
+            _nextToy.Top = label1.Top + label1.Height + 20;
+            _nextToy.Left = label1.Left;
+            Controls.Add(_nextToy);
         }
 
         public Form1()
@@ -31,7 +48,7 @@ namespace Programtervezési_minták_2
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            Ball b = Factory.CreateNew();
+            Toy b = Factory.CreateNew();
             _toys.Add(b);
             b.Left = -b.Width;
             mainPanel.Controls.Add(b);
@@ -46,7 +63,7 @@ namespace Programtervezési_minták_2
 
             Toy lastToy = _toys[0];
 
-            foreach (Ball item in _toys)
+            foreach (Toy item in _toys)
             {
                 item.MoveToy();
                 if (item.Left > lastToy.Left)
@@ -60,6 +77,30 @@ namespace Programtervezési_minták_2
                 _toys.Remove(lastToy);
                 mainPanel.Controls.Remove(lastToy);
             }
+        }
+
+        private void btn_Car_Click(object sender, EventArgs e)
+        {
+            Factory = new CarFactory();
+        }
+
+        private void btn_Ball_Click(object sender, EventArgs e)
+        {
+            Factory = new BallFactory() {BallColor = btn_BallColor.BackColor};
+        }
+
+        private void btn_BallColor_Click(object sender, EventArgs e)
+        {
+            Button kattintott = (Button)sender;
+            ColorDialog cd = new ColorDialog();
+            cd.Color = kattintott.BackColor;
+
+            if (cd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            kattintott.BackColor = cd.Color;
         }
     }
 }
